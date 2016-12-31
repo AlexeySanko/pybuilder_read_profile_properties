@@ -122,5 +122,9 @@ def test_fail_if_file_doesnt_exist(mock_project):
     assert "Properties file doesn't exists:" in str(excinfo.value)
 
 
-# def test_fail_if_incorrect_name_mask
-
+def test_fail_if_incorrect_name_mask(mock_project):
+    initialize_read_profile_properties_plugin(mock_project)
+    mock_project.set_property('read_profile_properties_file_mask', 'incorrect_%s%s_mask')
+    with raises(TypeError) as excinfo:
+        read_profile_properties_from_file(mock_project, Mock())
+    assert "not enough arguments for format string" in str(excinfo.value)

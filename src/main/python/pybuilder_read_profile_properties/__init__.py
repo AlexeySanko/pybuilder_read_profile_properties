@@ -64,10 +64,14 @@ def __dict_tree_to_flat(d, path_to_root=DEFAULT_ROOT_ELEMENT):
 
 @before("prepare", only_once=True)
 def read_profile_properties_from_file(project, logger):
+    try:
+        prop_file_name = project.get_property('read_profile_properties_file_mask') \
+                         % project.get_property('profile')
+    except:
+        raise
     properties_path = dir_join(project.expand_path('$read_profile_properties_dir'),
-                               project.get_property('read_profile_properties_file_mask') % (
-                                   project.get_property('profile')
-                               ))
+                               prop_file_name
+                               )
     if not isfile(properties_path):
         raise BuildFailedException(
             "Properties file doesn't exists: {path}".format(path=properties_path))
