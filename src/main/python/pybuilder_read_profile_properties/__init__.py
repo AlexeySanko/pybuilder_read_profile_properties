@@ -34,7 +34,7 @@ def initialize_read_profile_properties_plugin(project):
     project.plugin_depends_on('PyYAML')
     """ Init default plugin project properties. """
     project.set_property_if_unset('profile', 'dev')
-    project.set_property_if_unset('read_profile_properties_dir', '$basedir')
+    project.set_property_if_unset('read_profile_properties_dir', '')
     project.set_property_if_unset('read_profile_properties_file_mask', 'properties_%s.yaml')
     # In future we should implement BaseConfig reader type
     # project.set_property_if_unset('read_properties_file_type', 'yaml')
@@ -64,7 +64,7 @@ def __dict_tree_to_flat(d, path_to_root=DEFAULT_ROOT_ELEMENT):
 
 @before("prepare", only_once=True)
 def read_profile_properties_from_file(project, logger):
-    properties_path = dir_join(project.expand('$read_profile_properties_dir'),
+    properties_path = dir_join(project.expand_path('$read_profile_properties_dir'),
                                project.get_property('read_profile_properties_file_mask') % (
                                    project.get_property('profile')
                                ))

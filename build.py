@@ -37,6 +37,10 @@ default_task = ['clean', 'analyze', 'publish']
 
 @init
 def set_properties(project):
+    # dependencies
+    project.build_depends_on('mock')
+    project.build_depends_on('pytest')
+
     # coverage
     project.set_property('coverage_break_build', False)
 
