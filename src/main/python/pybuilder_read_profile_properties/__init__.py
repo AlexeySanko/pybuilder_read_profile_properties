@@ -49,7 +49,7 @@ def __add_to_prop(root, elem):
 
 def __dict_tree_to_flat(d, path_to_root=DEFAULT_ROOT_ELEMENT):
     return_dict = {}
-    if any([isinstance(v, dict) for k,v in d.items()]):
+    if any([isinstance(v, dict) for k, v in d.items()]):
         for k, v in d.iteritems():
             if isinstance(v, dict):
                 tmp = __dict_tree_to_flat(v, __add_to_prop(path_to_root, k))
