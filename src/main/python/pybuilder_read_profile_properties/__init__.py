@@ -50,14 +50,14 @@ def __add_to_prop(root, elem):
 def __dict_tree_to_flat(d, path_to_root=DEFAULT_ROOT_ELEMENT):
     return_dict = {}
     if any([isinstance(v, dict) for k, v in d.items()]):
-        for k, v in d.iteritems():
+        for k, v in d.items():
             if isinstance(v, dict):
                 tmp = __dict_tree_to_flat(v, __add_to_prop(path_to_root, k))
                 return_dict.update(tmp)
             else:
                 return_dict.update({__add_to_prop(path_to_root, k): v})
     else:
-        for k, v in d.iteritems():
+        for k, v in d.items():
             return_dict.update({__add_to_prop(path_to_root, k): v})
     return return_dict
 
@@ -85,5 +85,5 @@ def read_profile_properties_from_file(project, logger):
                                         " (overwritten)" if project.get_property(key) else "")
     logger.debug("External project properties from file: {output}"
                  .format(output=formatted))
-    for key, v in prop_from_file.iteritems():
+    for key, v in prop_from_file.items():
         project.set_property(key, v)
