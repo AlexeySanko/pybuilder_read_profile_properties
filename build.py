@@ -40,6 +40,7 @@ def set_properties(project):
     # dependencies
     project.build_depends_on('mock')
     project.build_depends_on('pytest')
+    project.depends_on('PyYAML')
 
     # coverage
     project.set_property('coverage_break_build', False)
