@@ -21,11 +21,11 @@ use_plugin("python.install_dependencies")
 use_plugin("python.flake8")
 use_plugin("python.coverage")
 use_plugin("python.distutils")
-use_plugin("python.unittest")
+use_plugin('pypi:pybuilder_pytest')
 
 
 name = "pybuilder-read-profile-properties"
-version = '0.0.0'
+version = '0.1.0'
 authors = [Author('Alexey Sanko', 'alexeycount@gmail.com')]
 url = 'https://github.com/AlexeySanko/pybuilder_read_profile_properties'
 description = 'Please visit {0} for more information!'.format(url)
@@ -38,6 +38,7 @@ default_task = ['clean', 'analyze', 'publish']
 @init
 def set_properties(project):
     # dependencies
+    project.build_depends_on('mock')
     project.build_depends_on('pytest')
 
     # coverage
@@ -51,7 +52,6 @@ def set_properties(project):
     project.set_property('distutils_classifiers', [
         'Development Status :: 4 - Beta',
         'Environment :: Console',
-        'Framework :: PyBuilder'
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
