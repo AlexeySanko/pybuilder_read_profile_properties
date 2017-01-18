@@ -82,7 +82,7 @@ def read_profile_properties_from_file(project, logger):
     for key in sorted(prop_from_file):
         formatted += "\n%40s : %s%s" % (key,
                                         prop_from_file[key],
-                                        " (overwritten)" if project.get_property(key) else "")
+                                        " (overwritten)" if project.get_property(key) is not None else "")
     logger.debug("External project properties from file: {output}"
                  .format(output=formatted))
     for key, v in prop_from_file.items():
