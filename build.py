@@ -25,7 +25,7 @@ use_plugin('pypi:pybuilder_pytest')
 
 
 name = "pybuilder-read-profile-properties"
-version = '0.2.0'
+version = '0.2.1'
 authors = [Author('Alexey Sanko', 'alexeycount@gmail.com')]
 url = 'https://github.com/AlexeySanko/pybuilder_read_profile_properties'
 description = 'Please visit {0} for more information!'.format(url)
