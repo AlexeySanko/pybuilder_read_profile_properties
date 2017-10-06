@@ -1,6 +1,22 @@
 PyBuilder Read Profile Properties Plugin [![Build Status](https://travis-ci.org/AlexeySanko/pybuilder_read_profile_properties.svg?branch=master)](https://travis-ci.org/AlexeySanko/pybuilder_read_profile_properties)
 =======================
 
+The basic way to provide build-time specific properties is usage
+pyb argument `-E/--environment` and initializers marked as environment specific.
+For example:
+
+```python
+@init(environments="dev")
+def init_dev(project):
+    # dev build initialization
+    project.set_property("some_property", "some_value")
+```
+
+But sometimes  we have a lot of external properties for config files filtering and more usefull to read these additional properties from YAML tree file.
+
+Description
+----------------------------------
+
 Plugin provides possibility to read project properties from YAML file for according profile.
 The main idea - support possibility to set different properties for different profiles (like Maven) which could be used directly or for filtering.
 For example, You could have two profiles "dev" and "qa" and disable coverage fail for developing purpose.
