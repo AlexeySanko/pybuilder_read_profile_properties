@@ -22,10 +22,11 @@ use_plugin("python.flake8")
 use_plugin("python.coverage")
 use_plugin("python.distutils")
 use_plugin('pypi:pybuilder_pytest')
+use_plugin('pypi:pybuilder_pytest_coverage')
+use_plugin('pypi:pybuilder_semver_git_tag')
 
 
 name = "pybuilder-read-profile-properties"
-version = '0.2.1'
 authors = [Author('Alexey Sanko', 'alexeycount@gmail.com')]
 url = 'https://github.com/AlexeySanko/pybuilder_read_profile_properties'
 description = 'Please visit {0} for more information!'.format(url)
@@ -50,6 +51,7 @@ def set_properties(project):
     project.set_property('flake8_break_build', True)
 
     # distutils
+    project.set_property('distutils_commands', ['bdist_wheel'])
     project.set_property('distutils_classifiers', [
         'Development Status :: 4 - Beta',
         'Environment :: Console',

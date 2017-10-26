@@ -67,7 +67,7 @@ def read_profile_properties_from_file(project, logger):
     try:
         prop_file_name = project.get_property('read_profile_properties_file_mask') \
                          % project.get_property('profile')
-    except:
+    except Exception:
         raise
     properties_path = dir_join(project.expand_path('$read_profile_properties_dir'),
                                prop_file_name
